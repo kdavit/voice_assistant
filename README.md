@@ -6,5 +6,4 @@ pip install SpeechRecognition
 
 pip install pyttsx3
 
-pip install PyAudio / if error occurs try: pip install pipwin
-                                           pipwin install pyaudio
+pip install PyAudio / if error occurs try: pip install pipwin and pipwin install pyaudio
