@@ -32,7 +32,7 @@ while (activate):
             if MyText =="end writing":
                 activate = False
             # write down in text file
-            f = open("textFile/audioInTxt.txt", "a+")
+            f = open("audioInTxt.txt", "a+")
             if MyText != "":
                  f.write(MyText+"\n")
             f.close()
