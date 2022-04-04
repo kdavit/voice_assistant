@@ -7,11 +7,18 @@ r = sr.Recognizer()
 
 language ='en'
 category ='neutral'
-# comands =["say joke","tell me joke","tell us joke","make joke","make us happy"]
-# language =["en","de","es","it","gl","eu"]
-# category =['neutral', 'chuck', 'all']
+probableComands =["say joke","tell joke","tell me joke","tell us joke","make joke","make us happy","said jest","a joke","make me happy","happy us",
+                  "witticisms","make me pleasantry","say something silly", "fool us"," fool around"]
 
-
+def checkComand(comand):
+    chek = False
+    for probable in probableComands:
+        if comand in probable:
+            chek = True
+            break
+        else:
+            chek =False
+    return chek
 # pyttsx3 used to talk text
 def SpeacText(commnad):
     engine = pyttsx3.init()
@@ -43,7 +50,8 @@ with sr.Microphone() as source2:
     Mytext =r.recognize_google(audio2)
     Mytext =Mytext.lower()
 
-    comand = re.search("(say|tell|make|play)(\s\w+\s|\s|\s\w+\s\w+\s)(joke)",Mytext)
+    ifcontains = checkComand(Mytext)
+    #comand = re.search("(say|tell|make|play)(\s\w+\s|\s|\s\w+\s\w+\s)(joke)",Mytext)
 
     # change joke category
     searchCategory =re.search(".*category.*(neutral|chuck|all)",Mytext)
@@ -61,7 +69,7 @@ with sr.Microphone() as source2:
 
     joke = pyjokes.get_joke(language=language, category=category)
     print("Text you sad : " + Mytext)
-    if comand:
+    if ifcontains:
         # SpeacText(pyjokes.get_joke(language="en", category="chuck"))
         SpeacText(joke)
         # print(searchCategory.group(1))
