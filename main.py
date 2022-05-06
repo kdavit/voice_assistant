@@ -1,6 +1,7 @@
 import speech_recognition as sr
 import pyttsx3
-
+from telljock import *
+from speacktoWrite import *
 
 def speak(text):
     engine = pyttsx3.init()
@@ -20,6 +21,8 @@ def get_audio():
 
         try:
             said = r.recognize_google(audio)
+            # telljock(said)
+            speakToText(said)
             print(said)
         except Exception as e:
             print("Exception: " + str(e))
@@ -28,5 +31,5 @@ def get_audio():
 
 
 text = get_audio()
-if "hello" in text:
-    speak("hello someone")
+# if "hello" in text:
+# speak("hello someone")
