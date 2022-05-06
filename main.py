@@ -22,7 +22,7 @@ def get_audio():
         try:
             said = r.recognize_google(audio)
             telljock(said)
-            # speakToText(said)
+            #speakToText(said)
             print(said)
         except Exception as e:
             print("Exception: " + str(e))
