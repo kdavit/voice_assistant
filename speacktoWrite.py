@@ -10,9 +10,6 @@ def speakToText(said):
         engine = pyttsx3.init()
         engine.say(command)
         engine.runAndWait()
-
-    activate =True
-
     try:
         # use the microphone as source for input.
         # with sr.Microphone() as source2:
