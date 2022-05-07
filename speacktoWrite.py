@@ -11,31 +11,16 @@ def speakToText(said):
         engine.say(command)
         engine.runAndWait()
     try:
-        # use the microphone as source for input.
-        # with sr.Microphone() as source2:
+        if said =="end writing":
+            activate = False
+        # write down in text file
+        f = open("audioInTxt.txt", "a+")
+        if said != "":
+             f.write(said+"\n")
+        f.close()
 
-            # wait for a second to let the recognizer
-            # adjust the energy threshold based on
-            # the surrounding noise level
-            # print("Silence please, calibratin bagrounde noise")
-            # r.adjust_for_ambient_noise(source, duration=0.2)
-            # print("calibrated, now speack ...")
-            # listens for the user's input
-            # audio2 = r.listen(source)
-            # Using google to recognize audio
-            # MyText = r.recognize_google(audio2)
-            # MyText = MyText.lower()
-
-            if said =="end writing":
-                activate = False
-            # write down in text file
-            f = open("audioInTxt.txt", "a+")
-            if said != "":
-                 f.write(said+"\n")
-            f.close()
-
-            print("Did you say " + said)
-            SpeakText(said)
+        print("Did you say " + said)
+        SpeakText(said)
 
 
     except sr.RequestError as e:
