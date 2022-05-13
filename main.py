@@ -1,6 +1,6 @@
 import speech_recognition as sr
 import pyttsx3
-from speacktoWrite import *
+from telljock import *
 
 
 def speak(text):
@@ -30,3 +30,8 @@ def get_audio():
 text = get_audio()
 if "hello" in text:
     speak("hello someone")
+
+def commandJcok():
+    telljock(text)
+
+commandJcok();
