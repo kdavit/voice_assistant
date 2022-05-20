@@ -1,8 +1,8 @@
 import speech_recognition as sr
 import pyttsx3
 from telljock import *
-from pdftoAudio import transformPDFtoAudio
-import pdfminer
+from pdfToAudio import transformPDFtoAudio
+
 from wrtieNote import note
 
 def speak(text):
@@ -33,7 +33,7 @@ text = get_audio()
 
 if "hello" in text:
     speak("hello someone")
-
+# write down note
 NOTE_STRS = ["make a note","make a note","write this down","remeber this","write note","write a note"]
 for phrase in NOTE_STRS:
     if phrase in text:
@@ -42,9 +42,8 @@ for phrase in NOTE_STRS:
         note(note_text)
         speak("I've made a note of that.")
 
-# def commandJock():
-#     telljock(text)
-
-# def pdftoAudio():
-#     transformPDFtoAudio(speak)
-# pdftoAudio()
+# read pdf book
+PDFREAD_STRS = ["read a pdf","read a book","read","pdf read","read pdf book"]
+for phrase in PDFREAD_STRS:
+    if phrase in text:
+        transformPDFtoAudio(speak,get_audio)
