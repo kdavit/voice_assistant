@@ -1,5 +1,6 @@
-import subprocess
 import datetime
+import subprocess
+
 
 def note(text):
     date = datetime.datetime.now()

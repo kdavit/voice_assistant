@@ -1,7 +1,7 @@
 # Python program to translate
 # speech to text and text to speech
-import speech_recognition as sr
 import pyttsx3
+import speech_recognition as sr
 
 r = sr.Recognizer()
 def speakToText(said):
