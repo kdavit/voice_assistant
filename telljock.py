@@ -21,13 +21,14 @@ def ChangeL(argument):
     return swicher[argument]
 
 def telljock (text,speak):
+    #change category if it is in text
     searchCategory =re.search(".*category.*(neutral|chuck|all)", text)
     if searchCategory:
         category =searchCategory.group(1)
     else:
         category ="neutral"
 
-    #change language
+    #change language if it is in text
     changeLanguage = re.search("(language|in).*(english|german|spanish|italian|galician|basque)", text)
     if changeLanguage:
         language =ChangeL(changeLanguage.group(2))
