@@ -6,6 +6,7 @@ from pdfToAudio import transformPDFtoAudio
 from telljock import *
 from wrtieNote import note
 
+
 # speak the text
 def speak(text):
     engine = pyttsx3.init()
