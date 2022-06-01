@@ -1,11 +1,12 @@
 import pyttsx3
+import re
 import speech_recognition as sr
 
 from pdfToAudio import transformPDFtoAudio
 from telljock import *
 from wrtieNote import note
 
-
+# speak the text
 def speak(text):
     engine = pyttsx3.init()
     voices = engine.getProperty('voices')
@@ -14,6 +15,7 @@ def speak(text):
     engine.say(text)
     engine.runAndWait()
 
+# listen to command
 def get_audio():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -28,7 +30,7 @@ def get_audio():
             print("Exception: " + str(e))
     return said.lower()
 
-# write down note
+# check and write down note
 def chekPraseForNote(text):
     NOTE_STRS = ["make","note","write this down", "write"]
     for phrase in NOTE_STRS:
@@ -39,12 +41,18 @@ def chekPraseForNote(text):
             speak("I've made a note of that.")
             break;
 
-# read pdf book
+# check and read pdf book
 def chekPraseForPDF(text):
     PDFREAD_STRS = ["pdf", "read","reed"]
     for phrase in PDFREAD_STRS:
         if phrase in text:
             transformPDFtoAudio(speak)
+
+# check and tell jock
+def chekPraseForJock(text):
+    comand = re.search("(joke|funny|humorous)", text)
+    if comand:
+        telljock(text, speak)
 
 text = get_audio()
 
@@ -53,7 +61,7 @@ if "hello" in text:
 
 chekPraseForNote(text)
 chekPraseForPDF(text)
-telljock(text)
+chekPraseForJock(text)
 
 
 
