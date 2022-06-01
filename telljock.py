@@ -15,11 +15,10 @@ def ChangeL(argument):
         "german":  "de",
         "spanish": "es",
         "italian": "it",
-        "italian": "it",
         "galician": "gl",
         "basque": "eu"
     }
-    return swicher.get(argument,"en")
+    return swicher[argument]
 
 def telljock (text,speak):
     searchCategory =re.search(".*category.*(neutral|chuck|all)", text)
