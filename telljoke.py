@@ -20,7 +20,7 @@ def ChangeL(argument):
     }
     return swicher[argument]
 
-def telljock (text,speak):
+def telljoke (text):
     #change category if it is in text
     searchCategory =re.search(".*category.*(neutral|chuck|all)", text)
     if searchCategory:
@@ -37,4 +37,4 @@ def telljock (text,speak):
     joke = pyjokes.get_joke(language=language, category=category)
     print("Text you sad : " + text)
 
-    speak(joke)
+    return joke

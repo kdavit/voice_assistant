@@ -1,9 +1,9 @@
 import pyttsx3
 import re
 import speech_recognition as sr
-
+from intentReader import intentReader
 from pdfToAudio import transformPDFtoAudio
-from telljock import *
+from telljoke import telljoke
 from wrtieNote import note
 
 
@@ -15,6 +15,7 @@ def speak(text):
     engine.setProperty('rate', 150)
     engine.say(text)
     engine.runAndWait()
+
 
 # listen to command
 def get_audio():
@@ -31,23 +32,22 @@ def get_audio():
             print("Exception: " + str(e))
     return said.lower()
 
+
 # check and write down note
 def chekPraseForNote(text):
-    NOTE_STRS = ["make","note","write this down", "write"]
-    for phrase in NOTE_STRS:
-        if phrase in text:
-            speak("What you like me to write down ?")
-            note_text = get_audio()
-            note(note_text)
-            speak("I've made a note of that.")
-            break;
+    speak("What you like me to write down ?")
+    note_text = get_audio()
+    note(note_text)
+    speak("I've made a note of that.")
+
 
 # check and read pdf book
 def chekPraseForPDF(text):
-    PDFREAD_STRS = ["pdf", "read","reed"]
+    PDFREAD_STRS = ["pdf", "read", "reed"]
     for phrase in PDFREAD_STRS:
         if phrase in text:
             transformPDFtoAudio(speak)
+
 
 # check and tell jock
 def chekPraseForJock(text):
@@ -55,14 +55,30 @@ def chekPraseForJock(text):
     if comand:
         telljock(text, speak)
 
-text = get_audio()
+def hello(text) :
+    return "hello someone"
+#
 
-if "hello" in text:
-    speak("hello someone")
-
-chekPraseForNote(text)
-chekPraseForPDF(text)
-chekPraseForJock(text)
-
+# chekPraseForNote(text)
+# chekPraseForPDF(text)
+# chekPraseForJock(text)
 
 
+def runAssistent():
+    text = get_audio()
+    if "ben" in text:
+        text = text.replace("ben", "").strip()
+        intentD = intentReader()
+        for intent in intentD:
+            for keyword in intentD[intent]:
+                if keyword in text:
+                    return intent, text.replace(keyword, "").strip()
+    return "No", ""
+
+
+while True:
+    intent, text = runAssistent()
+    if intent != 'No':
+        speak(globals()[intent](text))
+
+    print (intent, text)
