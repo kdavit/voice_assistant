@@ -21,7 +21,7 @@ def weather(city):
 	print(weather+"°C")
 
 
-city = input("გთოხვთ მიუთითოთ ქალაქის -> ")
+city = input("გთხოვთ მიუთითოთ ქალაქი -> ")
 city = city+" weather"
 weather(city)
 print("სასიამოვნო დღეს გისურვებთ :)")
