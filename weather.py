@@ -19,11 +19,4 @@ def weather(city):
 	collecttext = location+weather+time+info
 	translator = Translator()
 	translated_text = translator.translate(collecttext)
-	print(translated_text.text)
-	
-
-
-city = input("Enter the Name of City -> ")
-city = city+" weather"
-weather(city)
-print("Have a Nice Day:)")
+	return(translated_text.text)
