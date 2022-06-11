@@ -9,6 +9,11 @@ headers = {
 
 def weather(city,date='today'):
 	try:
+		text=text.split()
+        	city=text[0]
+        	date=""
+        	if len(text)>1:
+           		date=text[1]
 		city += "+weather"
 		res = requests.get(
 			f'https://www.google.com/search?q={city}+{date}&oq={city}+{date}&aqs=chrome.0.35i39l2j0l4j46j69i60.6128j1j7&sourceid=chrome&ie=UTF-8',
