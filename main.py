@@ -5,7 +5,7 @@ from intentReader import intentReader
 from pdfToAudio import transformPDFtoAudio
 from telljoke import telljoke
 from wrtieNote import note
-from searchYoutube import searchYoutube
+from weather import weather
 
 
 # speak the text
@@ -54,10 +54,13 @@ def chekPraseForPDF(text):
 def chekPraseForJock(text):
     comand = re.search("(joke|funny|humorous)", text)
     if comand:
-        telljock(text, speak)
+        telljoke(text, speak)
 
-def hello(text) :
+
+def hello(text):
     return "hello someone"
+
+
 #
 
 # chekPraseForNote(text)
@@ -68,7 +71,7 @@ def hello(text) :
 def runAssistent():
     text = get_audio()
     if "ben" in text:
-        text = text.replace("ben", "").strip()
+        text = text.strip()
         intentD = intentReader()
         for intent in intentD:
             for keyword in intentD[intent]:
@@ -77,9 +80,11 @@ def runAssistent():
     return "No", ""
 
 
-while True:
-    intent, text = runAssistent()
-    if intent != 'No':
-        speak(globals()[intent](text))
+if __name__ == "__main__":
 
-    print (intent, text)
+    while True:
+        intent, text = runAssistent()
+        if intent != 'No':
+            speak(globals()[intent](text))
+
+        print(intent, text)
