@@ -16,7 +16,7 @@ def weather(city):
 	time = soup.select('#wob_dts')[0].getText().strip()
 	info = soup.select('#wob_dc')[0].getText().strip()
 	weather = soup.select('#wob_tm')[0].getText().strip()
-	collecttext = location+weather+time+info
+	collecttext = time+location+weather+info
 	translator = Translator()
 	translated_text = translator.translate(collecttext)
 	return(translated_text.text)
