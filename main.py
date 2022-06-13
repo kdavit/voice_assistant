@@ -5,34 +5,8 @@ from intentReader import intentReader
 from pdfToAudio import transformPDFtoAudio
 from telljoke import telljoke
 from wrtieNote import note
-# from weather import weather
+from weather import weather
 from listenAndSpeak import *
-
-# speak the text
-# def speak(text):
-#     engine = pyttsx3.init()
-#     voices = engine.getProperty('voices')
-#     engine.setProperty('voice', voices[1].id)
-#     engine.setProperty('rate', 150)
-#     engine.say(text)
-#     engine.runAndWait()
-#
-#
-# # listen to command
-# def get_audio():
-#     r = sr.Recognizer()
-#     with sr.Microphone() as source:
-#         print("Listening...")
-#         audio = r.listen(source)
-#         said = ""
-#
-#         try:
-#             said = r.recognize_google(audio)
-#             print(said)
-#         except Exception as e:
-#             print("Exception: " + str(e))
-#     return said.lower()
-
 
 # check and write down note
 def chekPraseForNote(text):
