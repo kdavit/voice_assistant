@@ -3,7 +3,8 @@ import PyPDF2
 import os
 import pyttsx3
 import re
-def transformPDFtoAudio(speak):
+from listenAndSpeak import speak
+def transformPDFtoAudio(text):
     path = r"C:\Users\User\Desktop\zukasi\ASP.NET Core in Action ( PDFDrive ).pdf"
     pdf_file = open(path,'rb')
     read_pdf = PyPDF2.PdfFileReader(pdf_file, strict=False)
