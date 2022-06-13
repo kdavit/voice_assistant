@@ -5,33 +5,33 @@ from intentReader import intentReader
 from pdfToAudio import transformPDFtoAudio
 from telljoke import telljoke
 from wrtieNote import note
-from weather import weather
-
+# from weather import weather
+from listenAndSpeak import *
 
 # speak the text
-def speak(text):
-    engine = pyttsx3.init()
-    voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[1].id)
-    engine.setProperty('rate', 150)
-    engine.say(text)
-    engine.runAndWait()
-
-
-# listen to command
-def get_audio():
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        print("Listening...")
-        audio = r.listen(source)
-        said = ""
-
-        try:
-            said = r.recognize_google(audio)
-            print(said)
-        except Exception as e:
-            print("Exception: " + str(e))
-    return said.lower()
+# def speak(text):
+#     engine = pyttsx3.init()
+#     voices = engine.getProperty('voices')
+#     engine.setProperty('voice', voices[1].id)
+#     engine.setProperty('rate', 150)
+#     engine.say(text)
+#     engine.runAndWait()
+#
+#
+# # listen to command
+# def get_audio():
+#     r = sr.Recognizer()
+#     with sr.Microphone() as source:
+#         print("Listening...")
+#         audio = r.listen(source)
+#         said = ""
+#
+#         try:
+#             said = r.recognize_google(audio)
+#             print(said)
+#         except Exception as e:
+#             print("Exception: " + str(e))
+#     return said.lower()
 
 
 # check and write down note
@@ -49,14 +49,6 @@ def chekPraseForPDF(text):
         if phrase in text:
             transformPDFtoAudio(speak)
 
-
-# check and tell jock
-def chekPraseForJock(text):
-    comand = re.search("(joke|funny|humorous)", text)
-    if comand:
-        telljoke(text, speak)
-
-
 def hello(text):
     return "hello someone"
 
@@ -70,7 +62,8 @@ def hello(text):
 
 def runAssistent():
     text = get_audio()
-    if "ben" in text:
+    if "" in text:
+        # text = text.replace("ben"," ").strip()
         text = text.strip()
         intentD = intentReader()
         for intent in intentD:
