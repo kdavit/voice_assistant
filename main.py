@@ -5,11 +5,13 @@ from intentReader import intentReader
 from pdfToAudio import transformPDFtoAudio
 from telljoke import telljoke
 from wrtieNote import note
+from open_application import openApplication
 from weather import weather
 from listenAndSpeak import *
 
-def hello(text):
-    return "hello someone"
+# def hello(text):
+#     return "hello someone"
+
 
 def runAssistent():
     text = get_audio()

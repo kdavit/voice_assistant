@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 from googletrans import Translator
-from main import speak
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
@@ -10,10 +9,10 @@ headers = {
 def weather(city,date='today'):
 	try:
 		text=text.split()
-        	city=text[0]
-        	date=""
-        	if len(text)>1:
-           		date=text[1]
+		city=text[0]
+		date=""
+		if len(text)>1:
+			date=text[1]
 		city += "+weather"
 		res = requests.get(
 			f'https://www.google.com/search?q={city}+{date}&oq={city}+{date}&aqs=chrome.0.35i39l2j0l4j46j69i60.6128j1j7&sourceid=chrome&ie=UTF-8',
