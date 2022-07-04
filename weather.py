@@ -37,5 +37,3 @@ def weather(city, date=datetime.date.today()):  # date უნდა იყოს
 
 
 # speak(weather("tbilisi june 29th"))
-
-# pip install googletrans==3.1.0a0
