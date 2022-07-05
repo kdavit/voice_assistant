@@ -5,7 +5,9 @@ from intentReader import intentReader
 from pdfToAudio import transformPDFtoAudio
 from telljoke import telljoke
 from wrtieNote import note
+from open_application import openApplication
 from weather import weather
+from worldNews import world_news
 from listenAndSpeak import *
 from searchYoutube import searchYoutube
 from worldNews import world_news
