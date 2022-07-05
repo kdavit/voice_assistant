@@ -7,14 +7,18 @@ from telljoke import telljoke
 from wrtieNote import note
 from weather import weather
 from listenAndSpeak import *
+from searchYoutube import searchYoutube
+from worldNews import world_news
+
 
 def hello(text):
-    return "hello someone"
+    return "hello david"
+
 
 def runAssistent():
     text = get_audio()
-    if "" in text:
-        # text = text.replace("ben"," ").strip()
+    if "anna" in text:
+        text = text.replace("anna", "").strip()
         text = text.strip()
         intentD = intentReader()
         for intent in intentD:
