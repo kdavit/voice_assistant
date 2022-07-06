@@ -9,7 +9,7 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
 
 
-def weather(text):  # date უნდა იყოს აქ და არა today, ქვემოთ რექვესთში date-ს გადასცემდი რომელსაც ინიციალიზაცია არსად ქონდა
+def weather(text):
     try:
         text_split = text.split()
         city = text_split[0]
@@ -17,8 +17,6 @@ def weather(text):  # date უნდა იყოს აქ და არა tod
         date = get_date(text)
         if not date:
             date = datetime.date.today()
-        print("date: ", date)
-        print("city", city)
 
         city += "+weather"
         res = requests.get(
@@ -33,10 +31,10 @@ def weather(text):  # date უნდა იყოს აქ და არა tod
         collecttext = "in " + location + " at " + time + " it's " + info + " and temperature is " + weather + "°C"
         translator = Translator()
         translated_text = translator.translate(collecttext)
-        print(translated_text.text)  # აჯობებს რომ თან დავბეჭდოთ
+        print(translated_text.text)
         return translated_text.text
     except:
         return "can't find city"
 
 
-speak(weather("tbilisi dsvad fsdfew"))
+# speak(weather("tbilisi dsvad fsdfew"))
