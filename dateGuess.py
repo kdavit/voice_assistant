@@ -6,8 +6,7 @@ import os
 import time
 import subprocess
 
-MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november",
-          "december"]
+MONTHS = ["january", "february", "march", "april", "may", "june","july", "august", "september","october","november", "december"]
 DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 DAY_EXTENTIONS = ["rd", "th", "st", "nd"]
 
@@ -19,7 +18,8 @@ def get_date(text):
         return today
 
     if text.count("tommorow") > 0:
-        return today.day + 1
+        return today.day + 1     
+
 
     day = -1
     day_of_week = -1
@@ -44,7 +44,7 @@ def get_date(text):
 
     # THE NEW PART STARTS HERE
     if month < today.month and month != -1:  # if the month mentioned is before the current month set the year to the next
-        year = year + 1
+        year = year+1
 
     if month == -1 and day != -1:  # if we didn't find a month, but we have a day
         if day < today.day:
@@ -64,9 +64,8 @@ def get_date(text):
 
         return today + datetime.timedelta(dif)
 
-    if day != -1:
+    if day != -1:  
         return datetime.date(month=month, day=day, year=year)
-
 
 def note(text):
     date = datetime.datetime.now()
@@ -75,3 +74,7 @@ def note(text):
         f.write(text)
 
     subprocess.Popen(["notepad.exe", file_name])
+
+
+
+

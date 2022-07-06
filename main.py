@@ -9,18 +9,14 @@ from open_application import openApplication
 from weather import weather
 from worldNews import world_news
 from listenAndSpeak import *
-from searchYoutube import searchYoutube
-from worldNews import world_news
-
 
 def hello(text):
-    return "hello david"
-
+    return "hello someone"
 
 def runAssistent():
     text = get_audio()
-    if "anna" in text:
-        text = text.replace("anna", "").strip()
+    if "" in text:
+        # text = text.replace("ben"," ").strip()
         text = text.strip()
         intentD = intentReader()
         for intent in intentD:
