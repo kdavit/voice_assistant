@@ -3,20 +3,23 @@ from bs4 import BeautifulSoup
 from googletrans import Translator
 from listenAndSpeak import speak
 import datetime
+from dateGuess import get_date
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
 
 
-def weather(city, date=datetime.date.today()):  # date უნდა იყოს აქ და არა today, ქვემოთ რექვესთში date-ს გადასცემდი რომელსაც ინიციალიზაცია არსად ქონდა
+def weather(text):  # date უნდა იყოს აქ და არა today, ქვემოთ რექვესთში date-ს გადასცემდი რომელსაც ინიციალიზაცია არსად ქონდა
     try:
-        text = city.split()
-        city = text[0]
-        # today = datetime.date.today() ეს ხაზი ზედმეტია
+        text_split = text.split()
+        city = text_split[0]
 
-        # dateGuess-დან get_date ფუნქცია უნდა გამოიყენო მთლიანად ტექსტზე, სიტყვიერად ვამბობ თარიღს, ამიტომ პირდაპირ სასურველი ფორმატით თარიღს არ გადმოგცემ
-        if len(text) > 1:
-            date = text[1]
+        date = get_date(text)
+        if not date:
+            date = datetime.date.today()
+        print("date: ", date)
+        print("city", city)
+
         city += "+weather"
         res = requests.get(
             f'https://www.google.com/search?q={city}+{date}&oq={city}+{date}&aqs=chrome.0.35i39l2j0l4j46j69i60.6128j1j7&sourceid=chrome&ie=UTF-8',
@@ -36,4 +39,4 @@ def weather(city, date=datetime.date.today()):  # date უნდა იყოს
         return "can't find city"
 
 
-# speak(weather("tbilisi june 29th"))
+speak(weather("tbilisi dsvad fsdfew"))
