@@ -69,7 +69,7 @@ def get_date(text):
 
 
 def note(text):
-    date = datetime.datetime.now()
+    date = datetime.date.now()
     file_name = str(date).replace(":", "-") + "-note.txt"
     with open(file_name, "w") as f:
         f.write(text)
