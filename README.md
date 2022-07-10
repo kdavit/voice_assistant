@@ -10,6 +10,7 @@ pip install PyPDF2
 
 pip install pyjokes
 
-pip install googletrans
+pip install googletrans==3.1.0a0
 
 pip install PyAudio / if error occurs try: pip install pipwin and pipwin install pyaudio
+
