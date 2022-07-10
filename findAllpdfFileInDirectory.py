@@ -1,6 +1,6 @@
 import glob
 import os
-
+import re
 path = r"C:\Users\User\Desktop\zukasi"
 
 text_files = glob.glob(path + "/**/*.pdf", recursive=True)

@@ -17,8 +17,8 @@ def hello(text):
 
 def runAssistent():
     text = get_audio()
-    if "anna" in text:
-        text = text.replace("anna", "").strip()
+    if "" in text:
+        # text = text.replace("anna", "").strip()
         text = text.strip()
         intentD = intentReader()
         for intent in intentD:
