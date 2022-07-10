@@ -9,7 +9,7 @@ from weather import weather
 from listenAndSpeak import *
 from searchYoutube import searchYoutube
 from worldNews import world_news
-
+from open_application import openApplication
 
 def hello(text):
     return "hello someone"
