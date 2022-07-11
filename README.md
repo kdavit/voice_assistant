@@ -1,6 +1,6 @@
 # voice_assistant
 
-# for installation you will need:
+# For installation you will need:
 
 pip install SpeechRecognition
 
