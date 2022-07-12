@@ -13,5 +13,5 @@ def note(text):
     with open(file_location, "w") as f:
         f.write(text)
     subprocess.Popen(["notepad.exe", file_location])
-    # speak("I've made a note of that.")
+
     return "Your note successfully created"
