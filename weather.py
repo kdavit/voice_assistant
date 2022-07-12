@@ -23,15 +23,19 @@ def weather(text):
             f'https://www.google.com/search?q={city}+{date}&oq={city}+{date}&aqs=chrome.0.35i39l2j0l4j46j69i60.6128j1j7&sourceid=chrome&ie=UTF-8',
             headers=headers)
         print("Searching...\n")
+
         soup = BeautifulSoup(res.text, 'html.parser')
         location = soup.select('#wob_loc')[0].getText().strip()
         time = soup.select('#wob_dts')[0].getText().strip()
         info = soup.select('#wob_dc')[0].getText().strip()
         weather = soup.select('#wob_tm')[0].getText().strip()
+
         collecttext = "in " + location + " at " + time + " it's " + info + " and temperature is " + weather + "°C"
+
         translator = Translator()
         translated_text = translator.translate(collecttext)
         print(translated_text.text)
+
         return translated_text.text
     except:
         return "can't find city"
