@@ -21,13 +21,15 @@ def wikiSearch(text):
     try:
         # punkt is the function used to devide the string output from the wikipedia page called 'summary' into sentences, thus creating a list.
         nltk.download('punkt')
-
+        #get url
+        url = wikipedia.page(text).url
+        #search text
         search = wikipedia.search(text)
         summary = wikipedia.summary(text)
 
-        # let's count how many sentences there are in the summary
-        substring = '.'
-        amount_of_sentences = summary.count(substring)
+        #open wiki page
+        webbrowser.open(url)
+
 
         # bigtext = """how many sentences would you like to be read out of the wikipedia page summary? there are""" + str(
         #     amount_of_sentences)
@@ -41,14 +43,12 @@ def wikiSearch(text):
 
             print(colored("sentences read -->", 'yellow'), summary)
             summary = listToString(list_n2)
-            speak(str(summary))
 
+            return str(summary)
         else:
             for url in search(text, stop=1):
                 print(url)
-
             webbrowser.open(url)
+            return "can't find"
     except:
         speak("try again")
-
-# wikiSearch("Leonardo da Vinci")
