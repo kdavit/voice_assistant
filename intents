@@ -28,8 +28,6 @@ what's the weather like in
 what's the weather in
 
 
-
-
 [openApplication]
 open
 
@@ -39,6 +37,9 @@ top worldwide news
 worldwide news
 hot news
 news
+
+[wikiSearch]
+wiki
 
 
 

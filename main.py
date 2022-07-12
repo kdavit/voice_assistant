@@ -10,6 +10,7 @@ from listenAndSpeak import *
 from searchYoutube import searchYoutube
 from worldNews import world_news
 from open_application import openApplication
+from WikiSearchThatSpeaks import wikiSearch
 
 def hello(text):
     return "hello someone"
@@ -17,8 +18,8 @@ def hello(text):
 
 def runAssistent():
     text = get_audio()
-    if "" in text:
-        # text = text.replace("anna", "").strip()
+    if "anna" in text:
+        text = text.replace("anna", "").strip()
         text = text.strip()
         intentD = intentReader()
         for intent in intentD:
