@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 from googletrans import Translator
-from listenAndSpeak import speak
 import datetime
 from dateGuess import get_date
 
@@ -30,7 +29,7 @@ def weather(text):
         info = soup.select('#wob_dc')[0].getText().strip()
         weather = soup.select('#wob_tm')[0].getText().strip()
 
-        collecttext = "in " + location + " at " + time + " it's " + info + " and temperature is " + weather + "°C"
+        collecttext = "In " + location + " at " + time + " it's " + info + " and temperature is " + weather + "°C"
 
         translator = Translator()
         translated_text = translator.translate(collecttext)
@@ -39,6 +38,3 @@ def weather(text):
         return translated_text.text
     except:
         return "can't find city"
-
-
-# speak(weather("tbilisi dsvad fsdfew"))

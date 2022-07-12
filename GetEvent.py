@@ -1,4 +1,3 @@
-from _future_ import print_function
 from dateGuess import get_date
 
 import datetime
@@ -11,6 +10,7 @@ from googleapiclient.errors import HttpError
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
+
 
 def get_events(txt):
     """Shows basic usage of the Google Calendar API.
@@ -56,8 +56,10 @@ def get_events(txt):
     except HttpError as error:
         print('An error occurred: %s' % error)
 
+
 def main():
     get_events('text with no date')
+
 
 if _name_ == '_main_':
     main()
