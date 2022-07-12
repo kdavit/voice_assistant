@@ -1,5 +1,7 @@
 from listenAndSpeak import speak
 from os import system
+
+
 def openApplication(p):
     try:
         if ("GOOGLE" in p) or ("SEARCH" in p) or ("WEB BROWSER" in p) or ("CHROME" in p) or ("BROWSER" in p):
