@@ -37,8 +37,9 @@ def get_events(txt):
         service = build('calendar', 'v3', credentials=creds)
         # Call the Calendar API
         date = str(get_date(txt)) + "T12:00:00+04:00"
-        if date is None:
+        if date[0] == 'N':
             date = datetime.datetime.utcnow().isoformat("T") + "+04:00" # 'Z' indicates UTC time
+	print(date)
         print('Getting the upcoming 3 events')
         events_result = service.events().list(calendarId='primary', timeMin=date,
                                               maxResults=3, singleEvents=True,
@@ -46,7 +47,7 @@ def get_events(txt):
         events = events_result.get('items', [])
         if not events:
             print('No upcoming events found.')
-            return
+            return "No upcoming events found."
 	events_dict = {}
         # Prints the start and name of the next 3 events
         for event in events:
