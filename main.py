@@ -13,7 +13,7 @@ from searchYoutube import searchYoutube
 from worldNews import world_news
 from open_application import openApplication
 from WikiSearchThatSpeaks import wikiSearch
-
+from GetEvent import get_events
 
 
 if __name__ == "__main__":

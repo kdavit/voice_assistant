@@ -1,3 +1,4 @@
+from _future_ import print_function
 from dateGuess import get_date
 
 import datetime
@@ -10,7 +11,6 @@ from googleapiclient.errors import HttpError
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
-
 
 def get_events(txt):
     """Shows basic usage of the Google Calendar API.
@@ -36,10 +36,10 @@ def get_events(txt):
     try:
         service = build('calendar', 'v3', credentials=creds)
         # Call the Calendar API
-        date = get_date(txt)
+        date = str(get_date(txt)) + "T12:00:00+04:00"
         if date is None:
-            date = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
-        print('Getting the upcoming 10 events')
+            date = datetime.datetime.utcnow().isoformat("T") + "+04:00" # 'Z' indicates UTC time
+        print('Getting the upcoming 3 events')
         events_result = service.events().list(calendarId='primary', timeMin=date,
                                               maxResults=3, singleEvents=True,
                                               orderBy='startTime').execute()
@@ -47,19 +47,16 @@ def get_events(txt):
         if not events:
             print('No upcoming events found.')
             return
-        # Prints the start and name of the next 10 events
+	events_dict = {}
+        # Prints the start and name of the next 3 events
         for event in events:
             start = event['start'].get('dateTime', event['start'].get('date'))
+	    start = datetime.datetime.strptime(start[:19], '%Y-%m-%dT%H:%M:%S')
+	    start = start.strftime("%A %I:%M %p")
+	    events_dict[event['summary']] = " on " + str(start)
             print(start, event['summary'])
 
-        return events
+        return "You have: ", events_dict
     except HttpError as error:
         print('An error occurred: %s' % error)
 
-
-def main():
-    get_events('text with no date')
-
-
-if _name_ == '_main_':
-    main()
